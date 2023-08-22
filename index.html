@@ -32,6 +32,10 @@
     #contentBlock {
         margin-top: 20px;
     }
+    #userInput {
+                width: 100%;
+                padding: 10px;
+            }
     .rectangle {
       width: 100%;
       height: 100px;
@@ -65,13 +69,7 @@
 .hidden {
   display: none;
 }
-.intro-message {
-  text-align: center;
-}
 
-.intro-animation.show {
-  opacity: 1;
-}
   /* Tooltip for input field */
   .tooltip-container {
     position: relative;
@@ -216,43 +214,49 @@ select {
     <script src="https://api-maps.yandex.ru/2.1/?apikey=9b74a428-1a49-4fa8-8c6b-ededa57dcd11&lang=ru_RU"></script>
   </head>
   <body>
-    <div class="intro-animation">
-      <div class="intro-message">
-        <p>Добро пожаловать на сайт!</p>
-        <p>Этот сайт позволяет по вашему адресу, дать информацию о кандидате и построить маршрут до ближайшего избирательного участка</p>
-      </div>
-    </div>
+
     <div class="container mt-lg-4" >
       <div class="d-flex justify-content-center" id="logo-container">
         <img src="image\logo.jpg" class="img-fluid" alt="Логотип"/>
+      </div>
+      <div class="welcome-text">
+        <h3 class="text-center">Добро пожаловать на наш сайт!</h1>
+        <p class="text-center fs-4">
+          Здесь вы сможете узнать информацию о кандидате и построить маршрут до ближайшего избирательного участка.
+        </p>
       </div>
       <div class="content">
         <div class="rectangle">
           <div class="tooltip-container">
             <div class="tooltip">Введите сюда свой адрес, пример - 'Ногинск, ул. Декабристов, 81' </div>
-            <input type="text" id="userInput" placeholder="Введите ваш адрес здесь" id="inpt" size="30">
+            <input type="text" id="userInput" placeholder="Введите ваш адрес здесь" id="inpt" size="100">
           </div>
         </div>
 
+
+
+  
+        </div>
+
+        <ul id="dropdownList"></ul>
+        
         <div class="container">
-          <div class="container d-flex flex-column align-items-center mt-lg-5">
-            <p class="text-center">Альтернативный поиск:</p>
+          <div class="container d-flex flex-column align-items-center mt-lg-4">
+            <p class="text-center fs-4">Альтернативный поиск:</p>
             <div class="btn-group-vertical" role="group">
-              <button id="button1">Поиск по городам</button>
-              <button id="button2">Поиск по номеру округа</button>
+              <button class="btn btn-primary btn-lg btn-block" id="button1">Поиск по населенным пунктам</button>
+              <button class="btn btn-primary btn-lg btn-block" id="button2">Поиск по номеру округа</button>
             </div>
             <div id="modal" class="hidden">
-              <select id="okrug"></select>
+              <select id="okrug">
+                <option selected>Open this select menu</option>
+              </select>
               <select id="nasPunkt"></select>
               <select id="ulitsa" class="hidden"></select>
               <select id="dom" class="hidden"></select>
             </div>
           </div>
 
-  
-        </div>
-
-        <ul id="dropdownList"></ul>
         <div id="contentBlock">
           <div id="personBlock"><!--class="col-md-10"-->
             <div class="row mx-n2">
@@ -294,31 +298,6 @@ select {
         </div> 
       </div>
     </div>
-    <script>
-   let introAnimation = document.querySelector('.intro-animation');
-  introAnimation.classList.add('show');
-
-  // Show the input tooltip after the introductory animation
-  setTimeout(() => {
-    const inputTooltip = document.querySelector('.tooltip');
-    inputTooltip.style.display = 'block';
-
-    // Hide the tooltip after 7 seconds
-    setTimeout(() => {
-      inputTooltip.style.display = 'none';
-    }, 7000);
-  }, 7000);
-
-  // Hide the introductory animation after 7 seconds
-  setTimeout(() => {
-    introAnimation.classList.remove('show');
-  }, 7000);
-
-  // Remove the introductory animation after it has played
-  introAnimation.addEventListener('transitionend', () => {
-    introAnimation.style.display = 'none';
-  });
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
