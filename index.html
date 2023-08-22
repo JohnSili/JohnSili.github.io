@@ -62,7 +62,9 @@
   opacity: 0;
   transition: opacity 0.3s;
 }
-
+.hidden {
+  display: none;
+}
 .intro-message {
   text-align: center;
 }
@@ -89,12 +91,48 @@
     pointer-events: none;
     transition: opacity 1s; /* Adjusted transition duration */
   }
+/* Стили для кнопок "Кнопка 1" и "Кнопка 2" */
+#button1,
+#button2 {
+  background-color: rgb(21, 66, 133);
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px; /* Добавляем отступ снизу */
+}
 
+#button1:hover,
+#button2:hover {
+  background-color: #154285; /* Темнее для эффекта нажатия */
+}
   .tooltip-container:hover .tooltip {
     opacity: 1;
   }
-      
+      /* Стили для элементов <select> */
+select {
+  padding: 8px;
+  border: 1px solid rgb(21, 66, 133);
+  border-radius: 5px;
+  width: 100%;
+  font-size: 16px;
+  background-color: white;
+  color: rgb(21, 66, 133);
+  cursor: pointer;
+}
+
+/* Стили для скрытых <select> элементов */
+.hidden {
+  display: none;
+}
       @media only screen and (max-width: 600px) {
+        #button1,
+  #button2 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
         .tooltip {
         bottom: -30px; /* Adjust this value as needed */
         left: 50%;
@@ -181,7 +219,7 @@
     <div class="intro-animation">
       <div class="intro-message">
         <p>Добро пожаловать на сайт!</p>
-        <p>Этот сайт позволяет по вашему адресу, дать информацию о кандидате и построить маршрут до ближайшего избирательного участка!</p>
+        <p>Этот сайт позволяет по вашему адресу, дать информацию о кандидате и построить маршрут до ближайшего избирательного участка</p>
       </div>
     </div>
     <div class="container mt-lg-4" >
@@ -195,12 +233,31 @@
             <input type="text" id="userInput" placeholder="Введите ваш адрес здесь" id="inpt" size="30">
           </div>
         </div>
+
+        <div class="container">
+          <div class="container d-flex flex-column align-items-center mt-lg-5">
+            <p class="text-center">Альтернативный поиск:</p>
+            <div class="btn-group-vertical" role="group">
+              <button id="button1">Поиск по городам</button>
+              <button id="button2">Поиск по номеру округа</button>
+            </div>
+            <div id="modal" class="hidden">
+              <select id="okrug"></select>
+              <select id="nasPunkt"></select>
+              <select id="ulitsa" class="hidden"></select>
+              <select id="dom" class="hidden"></select>
+            </div>
+          </div>
+
+  
+        </div>
+
         <ul id="dropdownList"></ul>
         <div id="contentBlock">
           <div id="personBlock"><!--class="col-md-10"-->
             <div class="row mx-n2">
               <div class="col px-2">
-                <img src="-" alt="Person's Image" class="rounded mx-auto d-block" style="max-width: 70%; height: auto" id="ImageCandidate">
+                <img src="img/1.jpeg" alt="Person's Image" class="rounded mx-auto d-block" style="max-width: 70%; height: auto" id="ImageCandidate">
               </div>
               <div class="col px-2" id='info-peson'>
                 <h2 id="personName"></h2>
@@ -238,49 +295,6 @@
       </div>
     </div>
     <script>
-      // Display the introductory animation
-      //let introAnimation = document.querySelector('.intro-animation');
-      //introAnimation.classList.add('show');
-    //
-      //// Hide the introductory animation after 7 seconds
-      //setTimeout(() => {
-      //  introAnimation.classList.remove('show');
-      //}, 7000);
-      //// Remove the introductory animation after it has played
-      //introAnimation = document.querySelector('.intro-animation');
-      //introAnimation.addEventListener('transitionend', () => {
-      //  introAnimation.style.display = 'none';
-      //});
-    //
-      //// Remove the tooltip animation after it has played
-      //const inputTooltip = document.querySelector('.tooltip');
-      //inputTooltip.addEventListener('transitionend', () => {
-      //  inputTooltip.style.display = 'none';
-      //});
-      // good variant let introAnimation = document.querySelector('.intro-animation');
-      // good variant introAnimation.classList.add('show');
-      // good variant     
-      // good variant // Show the input tooltip after the introductory animation
-      // good variant setTimeout(() => {
-      // good variant   const inputTooltip = document.querySelector('.tooltip');
-      // good variant   inputTooltip.style.display = 'block';
-      // good variant }, 7000);
-    // good variant 
-      // good variant // Hide the introductory animation after 7 seconds
-      // good variant setTimeout(() => {
-      // good variant   introAnimation.classList.remove('show');
-      // good variant }, 7000);
-    // good variant 
-      // good variant // Remove the introductory animation after it has played
-      // good variant introAnimation.addEventListener('transitionend', () => {
-      // good variant   introAnimation.style.display = 'none';
-      // good variant });
-    // good variant 
-      // good variant // Remove the tooltip animation after it has played
-      // good variant const inputTooltip = document.querySelector('.tooltip');
-      // good variant inputTooltip.addEventListener('transitionend', () => {
-       //good variant   inputTooltip.style.display = 'none';
-   //});
    let introAnimation = document.querySelector('.intro-animation');
   introAnimation.classList.add('show');
 
@@ -304,8 +318,8 @@
   introAnimation.addEventListener('transitionend', () => {
     introAnimation.style.display = 'none';
   });
-      
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
   
