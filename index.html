@@ -46,7 +46,7 @@
       color: white;
     }
 
-    #personName, #personDescription, #Occupation{
+    #personName, #personDescription, #Occupation,#numUIK,#TimeWork, #TimeChoose{
       font-size: 30px ;
     }
     /* Introductory animation styles */
@@ -212,9 +212,8 @@ select {
     </style>
 
     <script src="https://api-maps.yandex.ru/2.1/?apikey=9b74a428-1a49-4fa8-8c6b-ededa57dcd11&lang=ru_RU"></script>
-  </head>
-  <body>
-
+</head>
+<body>
     <div class="container mt-lg-4" >
       <div class="d-flex justify-content-center" id="logo-container">
         <img src="image\logo.jpg" class="img-fluid" alt="Логотип"/>
@@ -232,31 +231,23 @@ select {
             <input type="text" id="userInput" placeholder="Введите ваш адрес здесь" id="inpt" size="100">
           </div>
         </div>
-
-
-
-  
         </div>
-
         <ul id="dropdownList"></ul>
-        
         <div class="container">
           <div class="container d-flex flex-column align-items-center mt-lg-4">
-            <p class="text-center fs-4">Альтернативный поиск:</p>
+            <p class="text-center fs-4">Другие варианты поиска:</p>
             <div class="btn-group-vertical" role="group">
-              <button class="btn btn-primary btn-lg btn-block" id="button1">Поиск по населенным пунктам</button>
-              <button class="btn btn-primary btn-lg btn-block" id="button2">Поиск по номеру округа</button>
+              <button class="btn btn-primary btn-lg btn-block" id="button1">Поиск по адресу регистрации</button>
+              <button class="btn btn-primary btn-lg btn-block" id="button2">Поиск по номеру избирательного округа</button>
             </div>
             <div id="modal" class="hidden">
               <select id="okrug">
-                <option selected>Open this select menu</option>
               </select>
               <select id="nasPunkt"></select>
               <select id="ulitsa" class="hidden"></select>
               <select id="dom" class="hidden"></select>
             </div>
           </div>
-
         <div id="contentBlock">
           <div id="personBlock"><!--class="col-md-10"-->
             <div class="row mx-n2">
@@ -267,19 +258,22 @@ select {
                 <h2 id="personName"></h2>
                 <p id="personDescription"></p>
                 <p id="Occupation"></p>
+                <p id="numUIK"></p>
+                <p id="TimeChoose"></p>
+                <p id="TimeWork"></p>
                 <div class="container mt-5">
                   <div class="row">
                     <div class="col-md-4">
                       <!-- VK Button -->
-                      <a href="https://vk.com" target="_blank" class="btn btn-outline-primary btn-block" id="VK">ВКонтакте</a>
+                      <a href="https://vk.com" target="_blank" class="btn btn-outline-primary btn-block" id="VK">страница кандидата в ВКонтакте</a>
                     </div>
                     <div class="col-md-4">
                       <!-- Telegram Button -->
-                      <a href="https://t.me" target="_blank" class="btn btn-outline-success btn-block" id="TG">Telegram</a>
+                      <a href="https://t.me" target="_blank" class="btn btn-outline-success btn-block" id="TG">страница кандидата в Telegram</a>
                     </div>
                     <div class="col-md-4">
                       <!-- OK Button -->
-                      <a href="https://ok.ru" target="_blank" class="btn btn-outline-warning btn-block" id="OK">Одноклассники</a>
+                      <a href="https://ok.ru" target="_blank" class="btn btn-outline-warning btn-block" id="OK">страница кандидата в Одноклассники</a>
                     </div>
                     <div class="row">
                       <div class="col-md-6 offset-md-3 mt-lg-5">
@@ -300,7 +294,6 @@ select {
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>  
   </body>
 </html>
